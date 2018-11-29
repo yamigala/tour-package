@@ -1,0 +1,73 @@
+
+<!-- template form for add component of orderList -->
+<form [formGroup]="tourForm" (ngSubmit)="onSubmit(tourForm.value)" novalidate>
+  <h3> Tour Details</h3>
+  <div>
+    <div>NAME
+    <input type="text"  id="name" placeholder="Enter your Name" formControlName="name">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" > 
+        <div *ngIf = "name.errors.required">required</div> 
+      <div *ngIf="name.errors.minlength">  Required 5 character. </div></div>
+    </div>
+<br>
+    <div>NO_OF_PERSON
+    <input type="text" class="form-control" id="noOfPerson" placeholder="Enter no_Of_Person" formControlName="noOfPerson">
+        <div *ngIf="noOfPerson.invalid && (noOfPerson.dirty || noOfPerson.touched)">
+        <div *ngIf = "noOfPerson.errors.required">required</div>  </div>
+    </div>  
+<br>
+    <div>PHONE_NO
+    <input type="text" class="form-control" id="phoneNo" placeholder="Enter phone_no" formControlName="phoneNo">
+        <div *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched)" >
+        <div *ngIf = "phoneNo.errors.required">required</div>
+        <div *ngIf="phoneNo.errors.maxlength"> Required 5 character. </div> </div>
+    </div>  
+<br>
+</div>
+
+<div formGroupName = "tripPlan">
+<hr>
+  <div>DATE_TO
+      <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+                 name="dp"  ngbDatepicker #d="ngbDatepicker" formControlName="dateTo">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">date</button>
+          </div>
+        </div>
+    
+         <div *ngIf = "dateTo.invalid && (dateTo.dirty || dateTo.touched)">
+         <div *ngIf = "dateTo.errors.required">required</div>
+         </div>
+    </div>
+<br>
+    <div>DATE_FROM
+        <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                   name="dp"  ngbDatepicker #d="ngbDatepicker" formControlName="dateFrom">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">date</button>
+            </div>
+          </div>
+   
+    <div *ngIf = "dateFrom.invalid && (dateFrom.dirty || dateFrom.touched)">
+        <div *ngIf = "dateFrom.errors.required">required</div>
+  </div>
+  </div>  
+<br>
+    <div>FROM_STATION
+    <input type="text" class="form-control" id="fromStation" placeholder="Enter station name" formControlName="fromStation">
+    <div *ngIf="fromStation.invalid && (fromStation.dirty || fromStation.touched)" >
+        <div *ngIf = "fromStation.errors.required">required</div>
+    </div>
+    </div>
+<br>
+    <div>TO_STATION
+    <input type="text" class="form-control" id="toStation" placeholder="Enter station name" formControlName="toStation">
+    <div *ngIf="toStation.invalid && (toStation.dirty || toStation.touched)" >
+        <div *ngIf = "toStation.errors.required">required</div>
+    </div>
+    </div>
+</div>
+    <button type="submit" >submit</button>    
+</form>
